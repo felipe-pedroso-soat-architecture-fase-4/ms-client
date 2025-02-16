@@ -32,6 +32,8 @@ jobs:
       DB_NAME: test_db
       DB_USER: test_user
       DB_PASSWORD: test_password
+      API_URL: http://localhost
+      API_PORT: 3000
     
     steps:
       - name: Checkout Code
@@ -42,8 +44,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Copy .env.test file
-        run: cp .env.test .env.test
+      # - name: Copy .env.test file
+      #   run: cp .env.test .env.test
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
