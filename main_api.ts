@@ -20,7 +20,7 @@ const defaultConfigPostgres = {
   ...defaultConfig,
   connection: typeof defaultConfig.connection === 'object' ? { ...defaultConfig.connection, database: 'postgres' } : defaultConfig.connection
 };
-console.log("test sonar")
+
 const dbPostgres = knex(defaultConfigPostgres);
 async function createDatabase() {
   const databases = await dbPostgres.raw("SELECT datname FROM pg_database WHERE datname = 'ms_client_db';");
