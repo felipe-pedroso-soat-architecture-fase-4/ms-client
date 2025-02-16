@@ -34,7 +34,7 @@ async function createDatabase() {
 
 async function createTables() {
   const db = knex(defaultConfig);
-   
+   console.log("oiiii")
     const clientsExists = await db.schema.hasTable('clients');
     if (!clientsExists) {
       await db.schema.createTable('clients', (table) => {
