@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node main_api.ts",
-    "dev": "dotenv -e .env.test -- ts-node main_api.ts",
+    "dev": "dotenv -e .env.test -- ts-node main_api.ts", 
     "test": "jest",
     "migrate": "knex migrate:latest --knexfile knexfile.ts",
     "rollback": "knex migrate:rollback --knexfile knexfile.ts",
