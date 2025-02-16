@@ -68,6 +68,10 @@ jobs:
         run: |
           PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "CREATE DATABASE $DB_NAME;" || echo "Database already exists"
 
+      - name: Test PostgreSQL Connection
+        run: |
+            PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "SELECT 1;"
+            
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
