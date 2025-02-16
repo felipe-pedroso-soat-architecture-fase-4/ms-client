@@ -46,7 +46,7 @@ jobs:
 
       - name: Check PostgreSQL Status
         run: |
-              CONTAINER_NAME=$(docker ps --filter "ancestor=postgres:15" --format "{{.Names}}")
+              CONTAINER_NAME=$(docker ps --filter "ancestor=postgres:16" --format "{{.Names}}")
               docker logs $CONTAINER_NAME
 
 
