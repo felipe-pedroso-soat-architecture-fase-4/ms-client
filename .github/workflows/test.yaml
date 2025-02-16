@@ -54,12 +54,22 @@ jobs:
             echo "API_URL: $API_URL"
             echo "API_PORT: $API_PORT"
 
+      - name: Check PostgreSQL Status
+        run: |
+            docker ps -a
+            docker logs postgres
+
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+              timeout 20s bash -c 'until pg_isready -h 127.0.0.1 -U $DB_USER -d $DB_NAME; do sleep 1; done'
+    
+      - name: Create Database (if needed)
+        run: |
+              PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -c "CREATE DATABASE $DB_NAME;"
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
-
-    #   - name: Run Database Migrations
-    #     run: |
-    #       yarn knex migrate:latest --env test
 
       - name: Start API and Run Tests
         run: |
