@@ -44,8 +44,15 @@ jobs:
         with:
           node-version: 18
 
-      # - name: Copy .env.test file
-      #   run: cp .env.test .env.test
+      - name: Print Environment Variables
+        run: |
+            echo "DB_HOST: $DB_HOST"
+            echo "DB_PORT: $DB_PORT"
+            echo "DB_NAME: $DB_NAME"
+            echo "DB_USER: $DB_USER"
+            echo "DB_PASSWORD: $DB_PASSWORD"
+            echo "API_URL: $API_URL"
+            echo "API_PORT: $API_PORT"
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
