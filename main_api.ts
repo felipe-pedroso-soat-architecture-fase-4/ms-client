@@ -20,7 +20,7 @@ const defaultConfigPostgres = {
   ...defaultConfig,
   connection: typeof defaultConfig.connection === 'object' ? { ...defaultConfig.connection, database: 'postgres' } : defaultConfig.connection
 };
-
+console.log("test sonar")
 const dbPostgres = knex(defaultConfigPostgres);
 async function createDatabase() {
   const databases = await dbPostgres.raw("SELECT datname FROM pg_database WHERE datname = 'ms_client_db';");
@@ -56,8 +56,6 @@ createDatabase().then(() => createTables()).catch((err) => {
 const httpServer = new ExpressAdapter();
 const connection = new KnexAdapter();
 
-
-//ms1
 const clientRepository = new ClientRepositoryDatabase(connection);
 const registerClient = new RegisterClient(clientRepository);
 const getClientById = new GetClientById(clientRepository);
