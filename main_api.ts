@@ -23,7 +23,6 @@ const defaultConfigPostgres = {
 
 const dbPostgres = knex(defaultConfigPostgres);
 async function createDatabase() {
-  console.log("test")
   const databases = await dbPostgres.raw("SELECT datname FROM pg_database WHERE datname = 'ms_client_db';");
   if (databases.rows.length === 0) {
       await dbPostgres.raw('CREATE DATABASE "ms_client_db";');
