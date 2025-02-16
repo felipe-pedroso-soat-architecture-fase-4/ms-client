@@ -63,6 +63,10 @@ jobs:
 
       - name: Start API and Run Tests
         run: |
-          yarn dev & # Inicia a API em background
-          sleep 5 # Aguarda a API subir
+          timeout 20s bash -c 'until pg_isready -U $DB_USER -d $DB_NAME; do sleep 1; done'
+
+          yarn dev &
+
+          sleep 5 
+
           yarn test
