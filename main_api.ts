@@ -56,8 +56,6 @@ createDatabase().then(() => createTables()).catch((err) => {
 const httpServer = new ExpressAdapter();
 const connection = new KnexAdapter();
 
-
-//ms1
 const clientRepository = new ClientRepositoryDatabase(connection);
 const registerClient = new RegisterClient(clientRepository);
 const getClientById = new GetClientById(clientRepository);
