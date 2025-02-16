@@ -44,16 +44,6 @@ jobs:
         with:
           node-version: 18
 
-      - name: Print Environment Variables
-        run: |
-            echo "DB_HOST: $DB_HOST"
-            echo "DB_PORT: $DB_PORT"
-            echo "DB_NAME: $DB_NAME"
-            echo "DB_USER: $DB_USER"
-            echo "DB_PASSWORD: $DB_PASSWORD"
-            echo "API_URL: $API_URL"
-            echo "API_PORT: $API_PORT"
-
       - name: Check PostgreSQL Status
         run: |
               CONTAINER_NAME=$(docker ps --filter "ancestor=postgres:15" --format "{{.Names}}")
@@ -68,17 +58,23 @@ jobs:
         run: |
           PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "CREATE DATABASE $DB_NAME;" || echo "Database already exists"
 
+      - name: Grant Permissions to User
+        run: |
+            PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
+     
+      - name: Wait for PostgreSQL to be ready
+        run: |
+              timeout 20s bash -c 'until pg_isready -h 127.0.0.1 -U $DB_USER -d $DB_NAME; do sleep 
+
       - name: Test PostgreSQL Connection
         run: |
             PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "SELECT 1;"
-            
+
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
       - name: Start API and Run Tests
         run: |
-          timeout 20s bash -c 'until pg_isready -U $DB_USER -d $DB_NAME; do sleep 1; done'
-
           yarn dev &
 
           sleep 5 
