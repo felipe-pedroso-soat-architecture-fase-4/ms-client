@@ -49,10 +49,6 @@ jobs:
         run: |
               timeout 20s bash -c 'until pg_isready -h 127.0.0.1 -U $DB_USER -d $DB_NAME; do sleep 1; done'
 
-      # - name: Grant Permissions to User
-      #   run: |
-      #       PGPASSWORD=$DB_PASSWORD psql -h 127.0.0.1 -U $DB_USER -d postgres -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME TO $DB_USER;"
-
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
@@ -61,3 +57,9 @@ jobs:
           yarn dev &
           sleep 5 
           yarn test
+
+      - name: SonarCloud Scan
+        uses: sonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

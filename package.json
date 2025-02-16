@@ -8,6 +8,7 @@
     "start": "ts-node main_api.ts",
     "dev": "dotenv -e .env.test -- ts-node main_api.ts", 
     "test": "jest",
+    "test:coverage": "jest --coverage --coverageReporters=lcov",
     "migrate": "knex migrate:latest --knexfile knexfile.ts",
     "rollback": "knex migrate:rollback --knexfile knexfile.ts",
     "seed": "knex seed:run --knexfile knexfile.ts",
