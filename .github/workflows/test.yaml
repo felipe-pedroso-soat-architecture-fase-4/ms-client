@@ -56,7 +56,7 @@ jobs:
         run: |
           yarn dev &
           sleep 5 
-          yarn test
+          yarn test:coverage
 
       - name: SonarCloud Scan
         uses: sonarSource/sonarcloud-github-action@master
