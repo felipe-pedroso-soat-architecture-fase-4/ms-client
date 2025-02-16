@@ -16,7 +16,7 @@ describe("RegisterClient", () => {
       cpf: "87748248800",
     };
     const responseClient = await axios.post(
-      `${process.env.API_url}:${process.env.API_PORT}/clients`,
+      `${process.env.API_URL}:${process.env.API_PORT}/clients`,
       input,
     );
     const outputClient = responseClient.data;
