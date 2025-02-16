@@ -14,6 +14,8 @@ dotenv.config();
 const environment = process.env.NODE_ENV || "development";
 const port = Number(process.env.API_PORT || 3001);
 
+console.log({envs: process.env });
+
 const defaultConfig = config[environment]
 const defaultConfigPostgres = {
   ...defaultConfig,
