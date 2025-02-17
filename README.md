@@ -1,4 +1,9 @@
-# order-manager-api
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=felipe-pedroso-soat-architecture-fase-4_ms-client&metric=alert_status&token=52833b939d09bf61dbea974945e1a2f728e214e2)](https://sonarcloud.io/summary/new_code?id=felipe-pedroso-soat-architecture-fase-4_ms-client) 
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=felipe-pedroso-soat-architecture-fase-4_ms-client&metric=coverage&token=52833b939d09bf61dbea974945e1a2f728e214e2)](https://sonarcloud.io/summary/new_code?id=felipe-pedroso-soat-architecture-fase-4_ms-client)
+
+
+# ms-client
 
 ## Descrição do Projeto
 
