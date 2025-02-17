@@ -1,9 +1,7 @@
 export default class Name {
     private value: string
     constructor(name: string) {
-        const isNameValid = !!name.match(
-            /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
-          );
+         const isNameValid = /^[a-zA-Z]+(?:[',. -][a-zA-Z]+)*$/.test(name);
 
           if (!isNameValid) {
             throw new Error("Invalid Name");
