@@ -1,4 +1,3 @@
-import Client from "../../domain/entity/Client";
 import { ClientRepository } from "../../infra/repository/ClientRepository";
 
 export type ErrorOutput = { error: string; code: number };
