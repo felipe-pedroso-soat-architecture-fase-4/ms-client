@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: ms-client-config
 data:
-  DB_HOST: order-manager-rds-instance.cdmeg0icuylz.us-east-1.rds.amazonaws.com
-  DB_NAME: "order_manager_instance_db"
-  DB_PORT: "5432"
+  DB_HOST: ${DB_HOST}
+  DB_NAME: ${DB_NAME}
+  DB_PORT:  ${DB_PORT}
   DB_CLIENT: pg
   NODE_ENV: "development"
