@@ -49,9 +49,7 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Install kubectl
-        uses: kubectl-action/setup-kubectl@v1
-        with:
-          version: v1.27.0
+        uses: azure/setup-kubectl@v4
 
       - name: Update kubeconfig for EKS
         run: |
